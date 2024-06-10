@@ -16,13 +16,13 @@ function InputBox({
     return (
         <div className={`bg-white p-3 rounded-lg text-base flex px-4 py-4 ${className}`}>
             <div className="w-1/2">
-                <label htmlFor={amountInputId }className="text-black/40 mb-2 inline-block">
+                <label htmlFor={amountInputId}className="text-black/40 mb-2 inline-block">
                     {label}
                 </label>
                 <input
                     id={amountInputId}
                     className="outline-none w-full bg-transparent py-1.5"
-                    type="number"
+                    type="text"
                     placeholder="Amount"
                     disabled={amountDisable}
                     value={amount}
@@ -34,7 +34,7 @@ function InputBox({
                 <select
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurrency}
-                    onChagnge = {(e) => onCurrencyChagnge && onCurrencyChagnge(e.target.value)}
+                    onChange = {(e) => onCurrencyChagnge && onCurrencyChagnge(e.target.value)}
                     disabled={currencyDisable}
                 >
                     

@@ -7,8 +7,9 @@ function App() {
   const [from,setFrom] = useState("usd")
   const [to,setTo] = useState("inr")
   const [convertedAmount,setConvertedAmount] = useState("")
+  const [trigger, setTrigger] = useState(false);
 
-  const currencyInfo = useCurrencyInfo(from)
+  const currencyInfo = useCurrencyInfo(from,trigger)
 
   const options = Object.keys(currencyInfo)
 
@@ -20,6 +21,7 @@ function App() {
   }
 
   const convert = () =>{
+    setTrigger((prev) => !prev);
     setConvertedAmount(amount * currencyInfo[to])
   }
 
@@ -44,8 +46,7 @@ function App() {
                                 label="From"
                                 amount={amount}
                                 CurrencyOptions={options}
-                                onCurrencyChagnge={(currency)=>
-                                  setAmount(amount)}
+                                onCurrencyChagnge={(currency)=> setFrom(currency)}
                                 onAmountChange={amount => setAmount(amount)}
                                 selectCurrency={from}
                                 
@@ -65,8 +66,7 @@ function App() {
                                 label="To"
                                 amount={convertedAmount}
                                 CurrencyOptions={options}
-                                onCurrencyChagnge={(currency)=>
-                                  setTo(currency)}
+                                onCurrencyChagnge={(currency)=>setTo(currency)}
                                 selectCurrency={to}
                                 amountDisable
                             />
